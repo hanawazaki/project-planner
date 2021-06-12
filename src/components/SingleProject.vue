@@ -1,11 +1,13 @@
 <template>
-  <div class="project">
+  <div class="project" :class="{complete: project.complete}">
     <div class="actions">
       <h3 @click="showDetails()">{{ project.title }}</h3>
       <div class="icons">
-        <span class="material-icons"> edit</span>
-        <span class="material-icons" @click="deletPost"> delete</span>
-        <span class="material-icons"> check_circle_outline</span>
+        <router-link :to="{name : 'EditProject', params : { id : project.id }}">
+          <span class="material-icons"> edit</span>
+        </router-link>
+          <span class="material-icons" @click="deletPost"> delete</span>
+          <span class="material-icons tick" @click="toggleDone"> check_circle_outline</span>
       </div>
     </div>
     <div class="details" v-if="isShowDetails == true">
@@ -32,6 +34,17 @@ export default {
         .then(() => this.$emit("delete", this.project.id))
         .catch((err) => console.log(err));
     },
+    toggleDone(){
+      fetch(this.uri,
+      {
+        method:"PATCH",
+        headers: {'Content-Type':'application/json'},
+        body : JSON.stringify({complete: !this.project.complete})
+      })
+      .then(() => this.$emit("complete",this.project.id))
+      .catch((err)=>console.log(err));
+      
+    }
   },
 };
 </script>
@@ -65,5 +78,13 @@ h3 {
 
 .material-icons:hover {
   color: #777;
+}
+
+.project.complete{
+  border-left: 4px solid #00ce89;
+}
+
+.project.complete .tick{
+  color: #00ce89
 }
 </style>

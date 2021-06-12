@@ -2,15 +2,27 @@
   "projects": [
     {
       "id": 1,
-      "title": "Create new homepage banner",
-      "details": "wokwkkwoowkwokkwo",
-      "complete": false
+      "title": "edited titledawdawd",
+      "details": "edited awdwadaw",
+      "complete": true
     },
     {
       "id": 2,
       "title": "Make marketing email",
       "details": "lorem ipsum",
-      "complete": true
+      "complete": false
+    },
+    {
+      "title": "wwwwwwwwwwwww",
+      "details": "xxxxxxxxxxxxxx",
+      "complete": false,
+      "id": 3
+    },
+    {
+      "title": "awdawd",
+      "details": "asdasdaw",
+      "complete": true,
+      "id": 4
     }
   ]
 }
